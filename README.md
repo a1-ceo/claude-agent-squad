@@ -44,6 +44,10 @@ Watch it plan → scout the code → build → review, spawning sub-agents as it
 - **Token cost compounds per branch** — each level gets its own context window. Keep the tree shallow (2–3 levels is the sweet spot). The `simplifier` and `scout` agents are deliberately cheap and focused for this reason.
 - **Customize freely**: the agent bodies are just markdown. Rewrite them for your stack. The value is the *pattern*: coordinators that delegate, leaves that execute, one shared `CLAUDE.md` philosophy.
 
+## Variants
+
+- [claude-agent-squad-codex](https://github.com/M-yer/claude-agent-squad-codex) — same tree, but every agent forwards its actual work (recon, planning, coding, review) to the [Codex CLI](https://github.com/openai/codex) via `codex exec` instead of doing it with Claude directly. Useful if you want the coordination UX here with implementation running on Codex.
+
 ## Why nested agents
 
 Before v2.1.172 a sub-agent was a dead end — it did its job and the branch ended. Now any sub-agent can spawn its own, so one instruction can set up a whole working team. This setup is a clean starting point you can strip down or build on.
